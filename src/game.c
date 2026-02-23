@@ -3,6 +3,7 @@
 #include "../include/time.h"
 #include "../include/random.h"
 #include "../include/game.h"
+#include "../include/scores.h"
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -330,7 +331,6 @@ void checkCollision( WINDOW * win, Snake * head, Snake ** end, Game * game )
     {
         //TODO: add snake body and destroy food. spawn new one.
         updateFood( win, &game, head );
-        sleep_ms(1000);
         elongateSnake( &(*end) );
     }
     else if( squares[ CELL_Y(head->y) ][ CELL_X(head->x) ] == SNAKE )
@@ -402,6 +402,7 @@ void gameLoop()
         sleep_ms( SNAKE_SPEED );
     }
     refresh();
+    exportScores( gameWindow, game );
     clearWindow( stdscr );
     clearWindow( gameWindow );
     freeSnake( &head, &end );

@@ -11,6 +11,11 @@ void importScores();
 
 void exportScores( WINDOW * win, Game game )
 {
+    // turns on cursor
+    curs_set( 1 );
+    // shows input to screen
+    echo();
+    // turns off delay
     nodelay( win, FALSE );
     WINDOW * scoreWin = NULL;
     int newScore;
@@ -25,6 +30,7 @@ void exportScores( WINDOW * win, Game game )
     // create window to prompt user to enter name and export
     // score to scores.txt
     scoreWin = createWindow( WINDOW_HEIGHT / 2, WINDOW_WIDTH );
+    box( scoreWin, 0, 0 );
     wrefresh( stdscr );
     mvwprintw( scoreWin, 2, 2, "Enter your name: " );
     wrefresh( scoreWin );
@@ -32,6 +38,7 @@ void exportScores( WINDOW * win, Game game )
     newScore = game.score;
     fprintf( fptr, "%s %d\n", name, newScore );
     fclose( fptr );
+    curs_set(0);
 }
 
 void displayScores( WINDOW * win );
