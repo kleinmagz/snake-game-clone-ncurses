@@ -10,12 +10,6 @@
 #include <time.h>
 #include <string.h>
 
-#define SNAKE_CHAR "\u2588"
-#define SNAKE_CHAR_LEN 5
-#define FOOD_CHAR "\u25ef"
-#define WINDOW_HEIGHT 20
-#define WINDOW_WIDTH 40
-
 // converts cell location to an array index
 // ensures that the snake wont be printed to
 // the border because it will overrite the border
@@ -27,66 +21,10 @@
 // snake speed in milliseconds
 #define SNAKE_SPEED 100
 
-
-enum snakeDirections
-{
-    STAY,
-    UP,
-    RIGHT,
-    DOWN,
-    LEFT
-};
-
-enum cellWhatOccupy
-{
-    SNAKE = 1,
-    FOOD = 2
-};
-
 // keeps track on which squares the snake currently is
 // usefull for collision detection (maybe)
 enum cellWhatOccupy squares[WINDOW_HEIGHT][WINDOW_WIDTH];
 
-typedef struct Snake
-{
-    // position
-    int y;
-    int x;
-
-    // direction
-    enum snakeDirections nextDir;
-    enum snakeDirections currDir;
-
-    // linked list to body parts
-    struct Snake * prev;
-    struct Snake * next;
-
-    bool isHead;
-
-} Snake;
-
-// food; lol
-typedef struct food
-{
-    int y;
-    int x;
-} Food;
-
-// keeps track of everything
-typedef struct game
-{
-    int score;
-    
-    Food food;
-    
-    // allows for expansion of the snake
-    Snake * snake;
-    
-    // to see if the game is starting
-    bool isStart;
-    bool isRunning;
-    
-} Game;
 
 
 // helper function to create a new node/body

@@ -1,4 +1,5 @@
 #include "../include/window.h"
+#include <stdlib.h>
 
 WINDOW * createWindow( int height, int width )
 {
