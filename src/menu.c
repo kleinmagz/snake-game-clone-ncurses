@@ -1,10 +1,8 @@
 #include "../include/window.h"
 #include "../include/menu.h"
 #include "../include/game.h"
+#include "../include/scores.h"
 #include <string.h>
-
-#define MENU_HEIGHT 10
-#define MENU_WIDTH 30
 
 char * choices[] = {
     "Play",
@@ -129,6 +127,7 @@ void runGame()
             
             case SCORES:
                 clearWindow( stdscr );
+                scoreMenu();
                 choice = 0;
                 break;
             

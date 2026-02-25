@@ -51,6 +51,7 @@ typedef struct food
 typedef struct game
 {
     int score;
+    int highScore;
     
     Food food;
     
